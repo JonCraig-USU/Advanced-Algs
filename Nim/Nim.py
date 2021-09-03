@@ -1,6 +1,8 @@
 import time
+import matplotlib.pyplot as plt
+import numpy as np
 
-def milliseconds():
+def time():
     return time.time()
 
 def Win(stones):
@@ -26,36 +28,13 @@ def Move(stones):
     if Win(stones-2):
         return 2
 
-# stones = input("How many stones would you like to play with? ")
-# while stones >= 0:
-#     if stones == 0:
-#         print("Player 1 wins!")
-#         break 
-#     p1 = input("Player 1: Pick a number 1 or 2: ")
-#     stones -= int(p1)
-#     print(stones)
-        
-#     if stones == 0:
-#         print("Player 2 wins!")
-#         break
-#     p2 = Move(stones)
-#     print("Player 2 chose: to take: " + str(p2))
-#     stones -= p2
-#     print(stones)  
-
 for i in range(1, 200):
-    start = milliseconds()
-    player1 = True
+    start = time()
     stones = i
     while stones > 0:
         n = Move(stones)
         stones -= n
-        print(stones)
-        player1 != player1
-    print('{}: {}'.format(i, milliseconds() - start))
+        # print(stones)
+    print('{}: {}'.format(i, time() - start))
 
 
-# if player1:
-#     print("Player 1 wins!")
-# else:
-#     print("Player 2 wins!")
