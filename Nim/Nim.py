@@ -2,8 +2,6 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 
-def time():
-    return time.time()
 
 def Win(stones):
     '''
@@ -23,18 +21,40 @@ def Move(stones):
         return 1
     if stones == 2:
         return 1
-    if Win(stones-1):
+    if not Win(stones-1):
         return 1
-    if Win(stones-2):
+    if not Win(stones-2):
         return 2
+    return 2
 
-for i in range(1, 200):
-    start = time()
+graphData = []
+numberArray = []
+for j  in range(0,20):
+    numberArray.append(j)
+
+for i in range(0, 20):
+    start = time.time()
     stones = i
+    counter = 0
     while stones > 0:
         n = Move(stones)
         stones -= n
         # print(stones)
-    print('{}: {}'.format(i, time() - start))
+    print('{}: {}'.format(i, time.time() - start))
+    graphData.append(time.time() - start)
+
+
+# plt.figure()
+plt.plot(numberArray, graphData)
+plt.yscale('log')
+# plt.xscale('linear')
+
+plt.title("Nim")
+plt.xlabel("Number of Stones")
+plt.ylabel("Time")
+
+# plt.grid(True)
+plt.show()
+
 
 
