@@ -1,4 +1,4 @@
-from time import time
+import time
 import matplotlib.pyplot as plt
 import numpy as np
 
@@ -27,40 +27,40 @@ def Move(stones):
         return 2
     return 2
 
-graphData = []
-numberArray = []
-for j  in range(0,20):
-    numberArray.append(j)
 
-for i in range(0, 20):
+
+xValues = []
+x = 0
+times = []
+begin = time.time()
+
+while (time.time() - begin) < 600:
+    stones = x
     start = time.time()
-    stones = i
-    counter = 0
     while stones > 0:
         n = Move(stones)
         stones -= n
-<<<<<<< HEAD
-        print(stones)
-    print('{}: {}'.format(i, time() - start))
-=======
-        # print(stones)
-    print('{}: {}'.format(i, time.time() - start))
-    graphData.append(time.time() - start)
+    print('{}: {}'.format(x, time.time() - start))
+    times.append(time.time() - start)
+    xValues.append(x)
+    x += 1
 
+bestX = np.asanyarray(xValues)
+bestY = np.asanyarray(times)
+m, b = np.polyfit(bestX, bestY, 1)
 
-# plt.figure()
-plt.plot(numberArray, graphData)
+# set the graph info
+plt.plot(xValues, times, 'ro', xValues, m*xValues+b, '-')
 plt.yscale('log')
-# plt.xscale('linear')
 
+# label the graph and axes
 plt.title("Nim")
 plt.xlabel("Number of Stones")
 plt.ylabel("Time")
 
-# plt.grid(True)
+# draw the graph
 plt.show()
 
->>>>>>> 15d624de906b5228f7b21d77f4f3fc0753cbd80c
 
 
 
