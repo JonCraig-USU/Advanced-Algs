@@ -25,6 +25,7 @@ def Move(stones):
         return 1
     if not Win(stones-2):
         return 2
+    return 2
 
 for i in range(1, 200):
     start = time()
